@@ -1,4 +1,8 @@
 sklearn
+xgboost 
 pandas
 numpy
-matplotlib
+matplotlib.pyplot
+seaborn
+imblearn.over_sampling
+sklearn.preprocessing 

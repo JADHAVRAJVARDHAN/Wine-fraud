@@ -34,6 +34,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Deploy Application
-      run: |
-        echo "Deploying application..."  # Replace with actual deployment command
+    - name: Build Docker Image
+      run: docker build -t my-app .
+    - name: Run Docker Container
+      run: docker run -d -p 5000:5000 my-app
+

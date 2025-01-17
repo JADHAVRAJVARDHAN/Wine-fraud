@@ -1,5 +1,3 @@
-# prompt: Write a code for test so for which i could set upit in github action ci cd
-
 import unittest
 import pandas as pd
 import numpy as np

@@ -1,0 +1,39 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main  # Trigger the workflow on pushes to the main branch
+  pull_request:
+    branches:
+      - main  # Trigger the workflow for pull requests to main
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest  # Use an Ubuntu runner
+
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v3  # Checkout your code
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.8'
+
+    - name: Install Dependencies
+      run: |
+        pip install -r requirements.txt
+
+    - name: Run Tests
+      run: |
+        python -m unittest discover tests  # Replace with your test command
+
+  deploy:
+    needs: build-and-test  # Run this only after build-and-test succeeds
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Deploy Application
+      run: |
+        echo "Deploying application..."  # Replace with actual deployment command

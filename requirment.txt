@@ -1,8 +1,0 @@
-sklearn
-xgboost 
-pandas
-numpy
-matplotlib.pyplot
-seaborn
-imblearn.over_sampling
-sklearn.preprocessing 

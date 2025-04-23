@@ -1,4 +1,3 @@
-# Detecting Wine Fraud Using Machine Learning & MLOps
 # 🍷 Detecting Wine Fraud Using Machine Learning & MLOps
 
 ## 📌 Introduction
@@ -14,7 +13,7 @@ I used a public dataset containing physicochemical properties of wine, such as:
 - pH values
 
 **Steps:**
-- Cleaned and normalized the data
+- Cleaned and standardise the data
 - Addressed missing values
 - Performed an 80/20 train-test split
 
@@ -23,8 +22,8 @@ I used a public dataset containing physicochemical properties of wine, such as:
 ## 🧠 Model Development
 
 I started with **Logistic Regression** and achieved 95% accuracy. To reduce false positives and enhance robustness, I implemented:
-- Random Forest Classifier
 - Gradient Boosting
+- Xgboost
 
 🔍 **Improved Accuracy**: `97.08%`  
 📉 **False Positive Reduction**: `62.79%`
@@ -50,7 +49,7 @@ To keep track of my model experiments and metrics, I used **MLflow**:
 
 To ensure consistent deployment, I containerized the application using Docker.
 
-```dockerfile
+dockerfile
 # Sample Dockerfile
 FROM python:3.10
 WORKDIR /app
@@ -59,8 +58,8 @@ RUN pip install -r requirements.txt
 CMD ["python", "src/fraud_detector.py"]
 
 Easily reproducible and shareable across teams
-
-🛆 Containerization with Docker
+---
+## 🛆 Containerization with Docker
 
 To ensure portability and reproducibility, I containerized the project:
 
@@ -69,8 +68,8 @@ Wrote a Dockerfile including all dependencies
 Built and ran the image locally and tested the API endpoint
 
 Ready to be deployed on any cloud platform or local server
-
-📉 Results
+---
+##📉 Results
 
 Final model results:
 
@@ -81,20 +80,20 @@ Precision: 96.5%
 Recall: 97.9%
 
 False Positive Reduction: 62.79%
-
+---
 Confusion matrix:
 
 [[783,  16],
  [ 32, 795]]
-
-💡 Challenges & Learnings
+---
+##💡 Challenges & Learnings
 
 Handling class imbalance was crucial—used class weights and oversampling
 
 Model performance improved significantly after feature engineering
 
 MLOps skills like MLflow and Docker made the solution scalable and team-friendly
-
-✅ Conclusion
+---
+# ✅ Conclusion
 
 This project showed how machine learning and MLOps can help tackle fraud detection in real-world industries like wine manufacturing. By automating and scaling fraud prediction, we can help producers and consumers maintain trust and quality.

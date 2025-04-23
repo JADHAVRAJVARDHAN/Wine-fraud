@@ -1,40 +1,62 @@
 # Detecting Wine Fraud Using Machine Learning & MLOps
-🍷 Introduction
+# 🍷 Detecting Wine Fraud Using Machine Learning & MLOps
 
-Counterfeit wine is a growing problem in the beverage industry, leading to revenue losses and trust issues among consumers. I wanted to see if machine learning could help identify fraudulent wines based solely on their chemical properties. In this blog, I’ll walk you through how I built a Wine Fraud Detection system using machine learning—and how I made it production-ready with MLOps tools like MLflow and Docker.
+## 📌 Introduction
+Counterfeit wine is a growing issue in the beverage industry, leading to major losses and trust concerns. I built a **Wine Fraud Detection** system using Machine Learning and integrated **MLOps** practices to track, scale, and containerize the solution for real-world deployment.
 
- 📊 Dataset & Preprocessing
+---
 
-I used a public dataset of physicochemical tests of wines (like pH, alcohol content, and citric acid levels). The target variable was binary: fraudulent vs. genuine.
+## 📊 Dataset & Preprocessing
 
-Steps:
+I used a public dataset containing physicochemical properties of wine, such as:
+- Alcohol content
+- Citric acid levels
+- pH values
 
-Cleaned missing and noisy data
+**Steps:**
+- Cleaned and normalized the data
+- Addressed missing values
+- Performed an 80/20 train-test split
 
-Normalized features for better model performance
+---
 
-Split into train-test sets (80-20)
+## 🧠 Model Development
 
-🧠 Model Development
+I started with **Logistic Regression** and achieved 95% accuracy. To reduce false positives and enhance robustness, I implemented:
+- Random Forest Classifier
+- Gradient Boosting
 
-I started with logistic regression as a baseline model:
+🔍 **Improved Accuracy**: `97.08%`  
+📉 **False Positive Reduction**: `62.79%`
 
-Achieved 95% accuracy
+**Tools Used:**  
+`pandas`, `numpy`, `scikit-learn`, `matplotlib`
 
-High recall, but false positives were a concern
+---
 
-To improve this, I used ensemble models (like Random Forest and Gradient Boosting), which improved accuracy to 97% and reduced false positives by 62.79%.
+## 📈 Model Tracking with MLflow
 
-Tools used:
-scikit-learn, pandas, matplotlib
+To keep track of my model experiments and metrics, I used **MLflow**:
+- Logged model parameters, metrics, and versions
+- Compared runs visually in the MLflow UI
+- Enabled better reproducibility and experiment management
 
-🔍 Model Tracking with MLflow
+🖼️ *Example:*  
+![MLflow Tracking](images/mlflow_tracking.png)
 
-To track model experiments, metrics, and parameters, I used MLflow:
+---
 
-Logged each model version with performance metrics
+## 📦 Containerization with Docker
 
-Compared models in the MLflow UI
+To ensure consistent deployment, I containerized the application using Docker.
+
+```dockerfile
+# Sample Dockerfile
+FROM python:3.10
+WORKDIR /app
+COPY . /app
+RUN pip install -r requirements.txt
+CMD ["python", "src/fraud_detector.py"]
 
 Easily reproducible and shareable across teams
 
